@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.StudentDAO;
-import dto.Student;
+import dto.Login;
 
 /**
  * Servlet implementation class LoginServlet
@@ -31,10 +32,19 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String view = "/WEB-INF/view/loginView.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String view = null;
 		HttpSession s = request.getSession();
-		Student result = null;
+		Login result = null;
 
 		try{
 			int id = Integer.parseInt(request.getParameter("id"));
@@ -44,25 +54,23 @@ public class LoginServlet extends HttpServlet {
 				if(result!=null){
 					view = "/WEB^INF/view/resultLogin.jsp";
 				}else{
-					view = "/WEB-INF/view/top.jsp";
+					view = "/WEB-INF/view/loginView.jsp";
+					s.setAttribute("login","muri");
 				}
 			}
 			int id1 = result.getId();
 			String pass1 = result.getPassword();
 			s.setAttribute("id", id1);
 			s.setAttribute("pass", pass1);
-		}catch(NumberFormatException e){
-			view = "WEB-INF/veiw/top.jsp";
-
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println(e);
+			view = "WEB-INF/veiw/loginView.jsp";
+			s.setAttribute("login","nai");
+		}finally{
+			RequestDispatcher d = request.getRequestDispatcher(view);
+			d.forward(request, response);
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

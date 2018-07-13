@@ -3,8 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import dto.Login;
 import dto.Student;
 
 public class StudentDAO {
@@ -68,10 +70,57 @@ public class StudentDAO {
 		return result;
 	}
 
-	public static Student loginDAO(int id, String password){
-		Student result = null;
+	public static Login loginDAO(int id, String password){
+		Login result = null;
 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+
+			con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/qualification?useSSL=false",
+					"root",
+					"8810310basuke");
+
+			String sql = "SELCT * FROM Student WHERE id = ? AND password = ?;";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.setString(2, password);
+
+			rs = pstmt.executeQuery();
+			rs.next();
+			result = new Login(id, password);
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("JDBCドライバが見つかりません。");
+			e.printStackTrace();
+		} catch (SQLException e){
+			System.out.println("DBアクセスに失敗しました。");
+			e.printStackTrace();
+		}catch (Exception e){
+			System.out.println("数字を指定してください");
+		} finally {
+			try{
+				if( pstmt != null){
+					pstmt.close();
+				}
+			} catch(SQLException e){
+				System.out.println("DB切断時にエラーが発生しました。");
+				e.printStackTrace();
+			}
+			try{
+				if(con != null){
+					con.close();
+				}
+			} catch (SQLException e){
+				System.out.println("DB切断時にエラーが発生しました。");
+				e.printStackTrace();
+			}
+		}
 
 		return result;
 	}
