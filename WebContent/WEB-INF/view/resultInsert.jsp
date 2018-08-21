@@ -13,6 +13,6 @@
 	Student result = (Student)request.getAttribute("insert");
 	%>
 	<p>登録完了しました</p>
-	<p>ログイン画面へ</p>
+	<p><a href="/StudentQualification/LoginServlet">ログイン画面へ</a></p>
 </body>
 </html>

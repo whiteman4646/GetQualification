@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String view = "/WEB-INF/View/loginView.jsp";
+		String view = "/WEB-INF/view/loginView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 			if(id > 1000000){
 				result=StudentDAO.loginDAO(id, pass);
 				if(result!=null){
-					view = "/WEB^INF/view/resultLogin.jsp";
+					view = "/WEB-INF/view/menu.jsp";
 				}else{
 					view = "/WEB-INF/view/loginView.jsp";
 					s.setAttribute("login","muri");
