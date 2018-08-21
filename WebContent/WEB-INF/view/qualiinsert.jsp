@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<ul>
+		<li><a href="/StudentQualification/QualiInsertServlet">受験資格登録</a></li>
+		<li><a href="/StudentQualification/SelectServlet">登録資格一覧</a></li>
+	</ul>
 	<form action="/StudentQualification/QualiInsertServlet" method="post">
 		資格ID:<input type="text" name="id">
 		資格名:<input type="text" name="sname">

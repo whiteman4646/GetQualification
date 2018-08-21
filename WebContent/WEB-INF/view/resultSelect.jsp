@@ -12,6 +12,11 @@
 <%request.setCharacterEncoding("UTF-8");
 	ArrayList<Qualitb> QualiList = (ArrayList<Qualitb>)request.getAttribute("select");%>
 
+	<ul>
+		<li><a href="/StudentQualification/QualiInsertServlet">受験資格登録</a></li>
+		<li><a href="/StudentQualification/SelectServlet">登録資格一覧</a></li>
+	</ul>
+
 	<table border="2">
 		<tr>
 			<th>資格ID</th>
