@@ -14,11 +14,10 @@
 
 	<table border="2">
 		<tr>
-			<th>ID</th>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Genre</th>
-			<th>Price</th>
+			<th>資格ID</th>
+			<th>資格名</th>
+			<th>受験日</th>
+			<th>結果</th>
 		</tr>
 		<%for (Qualitb result : QualiList) {%>
 		<tr align = "center">

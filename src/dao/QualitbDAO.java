@@ -25,7 +25,7 @@ public class QualitbDAO {
 					"root",
 					"8810310basuke");
 
-			String sql = "INSERT INTO student VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO qualitb VALUES(?,?,?,?);";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);

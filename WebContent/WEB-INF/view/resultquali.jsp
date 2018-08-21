@@ -11,6 +11,6 @@
 
 	   下記または上部ボタンにて確認をしてください</p>
 
-	 <p><a href="/StuentQualification/QualiInsertServlet">登録資格一覧</a></p>
+	 <p><a href="/StudentQualification/SelectServlet">登録資格一覧</a></p>
 </body>
 </html>
