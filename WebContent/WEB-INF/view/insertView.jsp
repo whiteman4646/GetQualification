@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="/StudentQualification/InsertServlet" method="post">
-		ID:<input type="text" name="id">
+		学籍番号:<input type="text" name="id">
 		名前:<input type="text" name="title">
 		フリガナ:<input type="text" name="author">
 		性別：<select name="gender">
