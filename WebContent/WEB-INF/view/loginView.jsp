@@ -16,7 +16,7 @@
 		s.setAttribute("login", null);%>
 	<form action="LoginServlet" method="post">
 		学籍番号：<input type="text" name="id">
-		パスワード：<input type="text" name="pass">
+		パスワード：<input type="password" name="pass">
 		<input type="submit" value="ログイン">
 	</form>
 	<p><a href="/StudentQualification/InsertServlet">新規ユーザー登録はこちら</a></p>
