@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.QualitbDAO;
 import dto.Qualitb;
@@ -41,13 +42,15 @@ public class QualiInsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession s = request.getSession(true);
 
 		int id = Integer.parseInt(request.getParameter("id"));
-		String sname = request.getParameter("sname");
+		String qname = request.getParameter("sname");
+		int sid = (int)s.getAttribute("id");
 		String date = request.getParameter("date");
 		String result = request.getParameter("result");
 
-		Qualitb  Qresult = QualitbDAO.qualiinsertDAO(id, sname, date, result);
+		Qualitb  Qresult = QualitbDAO.qualiinsertDAO(id, qname, sid,  date, result);
 		request.setAttribute("qualiinsert", Qresult);
 
 		String view = "/WEB-INF/view/resultquali.jsp";

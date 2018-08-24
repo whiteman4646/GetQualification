@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import dto.Qualitb;
 
 public class QualitbDAO {
-	public static Qualitb qualiinsertDAO(int id, String sname, String date, String result){
+	public static Qualitb qualiinsertDAO(int id, String qname, int sid, String date, String result){
 
 		Qualitb Qresult = null;
 
@@ -25,13 +25,14 @@ public class QualitbDAO {
 					"root",
 					"8810310basuke");
 
-			String sql = "INSERT INTO qualitb VALUES(?,?,?,?);";
+			String sql = "INSERT INTO qualitb VALUES(?,?,?,?,?);";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
-			pstmt.setString(2, sname);
-			pstmt.setString(3, date);
-			pstmt.setString(4, result);
+			pstmt.setString(2, qname);
+			pstmt.setInt(3, sid);
+			pstmt.setString(4, date);
+			pstmt.setString(5, result);
 
 			pstmt.executeUpdate();
 
@@ -65,7 +66,7 @@ public class QualitbDAO {
 		return Qresult;
 	}
 
-	public static ArrayList<Qualitb> selectDAO(){
+	public static ArrayList<Qualitb> selectDAO(int key){
 		ArrayList<Qualitb> Qresult = new ArrayList<Qualitb>();
 
 		Connection con = null;
@@ -80,18 +81,19 @@ public class QualitbDAO {
 					"root",
 					"8810310basuke");
 
-			String sql = "SELECT * FROM qualitb;";
+			String sql = "SELECT * FROM qualitb where sid = ?;";
 
 			pstmt = con.prepareStatement(sql);
-
+			pstmt.setInt(1, key);
 			rs = pstmt.executeQuery();
 
 			while(rs.next()){
 				int id = rs.getInt("id");
-				String sname = rs.getString("sname");
+				String qname = rs.getString("qname");
+				int sid =rs.getInt("sid");
 				String date = rs.getString("date");
 				String result = rs.getString("result");
-				Qresult.add(new Qualitb(id,sname,date,result));
+				Qresult.add(new Qualitb(id,qname,sid,date,result));
 			}
 		} catch (ClassNotFoundException e) {
 			System.out.println("JDBCドライバが見つかりません。");

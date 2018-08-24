@@ -85,7 +85,7 @@ public class StudentDAO {
 					"root",
 					"8810310basuke");
 
-			String sql = "SELECT * FROM Student WHERE id = ? AND password = ?;";
+			String sql = "SELECT * FROM student WHERE id = ? AND password = ?;";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
@@ -93,7 +93,9 @@ public class StudentDAO {
 
 			rs = pstmt.executeQuery();
 			rs.next();
-			result = new Login(id, password);
+			int key = rs.getInt("id");
+			String pass = rs.getString("password");
+			result = new Login(key, pass);
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("JDBCドライバが見つかりません。");

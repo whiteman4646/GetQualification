@@ -10,6 +10,7 @@
 	<ul>
 		<li><a href="/StudentQualification/QualiInsertServlet">受験資格登録</a></li>
 		<li><a href="/StudentQualification/SelectServlet">登録資格一覧</a></li>
+		<li><a href="/StudentQualification/LoginServlet">ログイン画面へ</a>
 	</ul>
 	<p>------使い方説明など------</p>
 </body>

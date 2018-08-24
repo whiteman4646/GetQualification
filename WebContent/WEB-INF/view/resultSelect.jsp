@@ -16,6 +16,7 @@
 		<li><a href="/StudentQualification/TopShow">トップメニュー</a></li>
 		<li><a href="/StudentQualification/QualiInsertServlet">受験資格登録</a></li>
 		<li><a href="/StudentQualification/SelectServlet">登録資格一覧</a></li>
+		<li><a href="/StudentQualification/LoginServlet">ログイン画面へ</a>
 	</ul>
 
 	<table border="2">
@@ -28,7 +29,7 @@
 		<%for (Qualitb result : QualiList) {%>
 		<tr align = "center">
 		<td><%=result.getId()%></td>
-		<td><%=result.getSname()%></td>
+		<td><%=result.getQname()%></td>
 		<td><%=result.getDate()%></td>
 		<td><%=result.getResult()%></td>
 		</tr>

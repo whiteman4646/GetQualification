@@ -13,10 +13,14 @@
 		if(("muri").equals(obj) || ("nai").equals(obj)){%>
 		<p style=" color:red">ユーザ情報がありません。</p>
 		<%}
-		s.setAttribute("login", null);%>
+		else if(("muri").equals(obj) || ("Num").equals(obj)){%>
+		<p style=" color:red">IDが文字型じゃないじゃないですかやだー</p>
+		<%}
+		s.setAttribute("login", null);
+		%>
 	<form action="LoginServlet" method="post">
 		学籍番号：<input type="text" name="id">
-		パスワード：<input type="password" name="pass">
+		パスワード：<input type="password" name="password">
 		<input type="submit" value="ログイン">
 	</form>
 	<p><a href="/StudentQualification/InsertServlet">新規ユーザー登録はこちら</a></p>

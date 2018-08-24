@@ -11,6 +11,7 @@
 		<li><a href="/StudentQualification/TopShow">トップメニュー</a></li>
 		<li><a href="/StudentQualification/QualiInsertServlet">受験資格登録</a></li>
 		<li><a href="/StudentQualification/SelectServlet">登録資格一覧</a></li>
+		<li><a href="/StudentQualification/LoginServlet">ログイン画面へ</a>
 	</ul>
 	<form action="/StudentQualification/QualiInsertServlet" method="post">
 		資格ID:<input type="text" name="id">

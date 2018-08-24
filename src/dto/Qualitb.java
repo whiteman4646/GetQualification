@@ -2,18 +2,16 @@ package dto;
 
 public class Qualitb {
 	private int id;
-	private String sname;
+	private String qname;
+	private int sid;
 	private String date;
 	private String result;
 
-	public Qualitb(){
 
-	}
-
-	public Qualitb(int id, String sname, String date, String result) {
-		super();
+	public Qualitb(int id, String qname, int sid, String date, String result) {
 		this.id = id;
-		this.sname = sname;
+		this.qname = qname;
+		this.sid = sid;
 		this.date = date;
 		this.result = result;
 	}
@@ -26,12 +24,20 @@ public class Qualitb {
 		this.id = id;
 	}
 
-	public String getSname() {
-		return sname;
+	public String getQname() {
+		return qname;
 	}
 
-	public void setSname(String sname) {
-		this.sname = sname;
+	public void setQname(String qname) {
+		this.qname = qname;
+	}
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
 
 	public String getDate() {
@@ -49,4 +55,5 @@ public class Qualitb {
 	public void setResult(String result) {
 		this.result = result;
 	}
+
 }

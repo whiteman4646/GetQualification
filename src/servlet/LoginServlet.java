@@ -32,6 +32,8 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession s = request.getSession(true);
+		s.removeAttribute("id");
 		String view = "/WEB-INF/view/loginView.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
@@ -48,9 +50,9 @@ public class LoginServlet extends HttpServlet {
 
 		try{
 			int id = Integer.parseInt(request.getParameter("id"));
-			String pass = request.getParameter("pass");
+			String password = request.getParameter("password");
 			if(id > 1000000){
-				result=StudentDAO.loginDAO(id, pass);
+				result=StudentDAO.loginDAO(id, password);
 				if(result!=null){
 					view = "/WEB-INF/view/menu.jsp";
 				}else{
@@ -62,10 +64,15 @@ public class LoginServlet extends HttpServlet {
 			String pass1 = result.getPassword();
 			s.setAttribute("id", id1);
 			s.setAttribute("pass", pass1);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			System.out.println(e);
+			view = "/WEB-INF/view/loginView.jsp";
+			s.setAttribute("login","Num");
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println(e);
-			view = "WEB-INF/veiw/loginView.jsp";
+			view = "/WEB-INF/view/loginView.jsp";
 			s.setAttribute("login","nai");
 		}finally{
 			RequestDispatcher d = request.getRequestDispatcher(view);
